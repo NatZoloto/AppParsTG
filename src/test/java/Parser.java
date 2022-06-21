@@ -12,8 +12,8 @@ import java.net.URL;
 import java.util.*;
 
 public class Parser {
-    private static HashMap<String, Integer> properties = new HashMap<>();
-    private static HashMap<String, Integer> mapUrls = new HashMap<>();
+    private static final HashMap<String, Integer> properties = new HashMap<>();
+    private static final HashMap<String, Integer> mapUrls = new HashMap<>();
 
     //сохраняем конфиг свойства
     private static void saveConfigProperties() {
@@ -37,8 +37,7 @@ public class Parser {
         File file = new File("src/main/resources/config.properties");
         try {
             properties.load(new FileInputStream(file));
-            String value = properties.getProperty(s);
-            return value;
+            return properties.getProperty(s);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -214,9 +213,9 @@ public class Parser {
     // считаем количество страниц, на которые нужно будет переходить
     private static int pageCount(String url) throws IOException, NumberFormatException {
         int pagesCounter = 1;
-        Document document = Jsoup.connect(url).userAgent(getConfigProperty("USER_AGENT"))
-                .referrer(getConfigProperty("REFERRER"))
-                .timeout(100 * 1000)
+        Document document = Jsoup.connect(url).userAgent(Objects.requireNonNull(getConfigProperty("USER_AGENT")))
+                .referrer(Objects.requireNonNull(getConfigProperty("REFERRER")))
+                .timeout(1000 * 1000)
                 .get();
         Elements pages = document.select("#divSayfalamaAlt > div > div > a");
         if (pages.size() > 0) {
@@ -224,7 +223,6 @@ public class Parser {
                 switch (p.text()) {
                     case ("1"), ("16"), ("15"), ("2"), ("3"), ("4"), ("5"), ("6"), ("7"), ("9"), ("8"), ("10"), ("11"), ("12"), ("13"), ("14") -> pagesCounter = Integer.parseInt(p.text());
                     default -> {
-                        break;
                     }
                 }
             }
@@ -245,9 +243,9 @@ public class Parser {
     // получаем ссылки на страницу товара, добавляем в лист
     private static List<String> addUrlsProducts(List<String> urlsPages) throws IOException {
         List<String> urlsProducts = new ArrayList<>();
-        for (int i = 0; i < urlsPages.size(); i++) {
-            Document document = Jsoup.connect(urlsPages.get(i)).userAgent(getConfigProperty("USER_AGENT"))
-                    .referrer(getConfigProperty("REFERRER"))
+        for (String urlsPage : urlsPages) {
+            Document document = Jsoup.connect(urlsPage).userAgent(Objects.requireNonNull(getConfigProperty("USER_AGENT")))
+                    .referrer(Objects.requireNonNull(getConfigProperty("REFERRER")))
                     .timeout(100 * 1000)
                     .get();
             Elements links = document.getElementsByClass("detailLink detailUrl");// link&title
@@ -258,28 +256,9 @@ public class Parser {
         return urlsProducts;
     }
 
-    // конвертируем цену в число, убираем лишнее
-    private static int getConvertPrice(String price) throws NullPointerException {
-        if (!(price == "")) {
-            String s = price.contains("TL") ? price.substring(0, price.indexOf("TL")).trim() : "";
-            String n = "";
-            if (s.contains(".")) {
-                int i = s.indexOf(".");
-                int j = s.indexOf(",");
-                n = s.substring(0, i) + s.substring(i + 1, j);
-            } else {
-                int j = s.indexOf(",");
-                n = s.substring(0, j);
-            }
-            return Integer.parseInt(n);
-        }
-        return 0;
-    }
-
     // конвертируем ссылку на картинку
     private static String getConvertIMG(String link) {
-        String url = "https://www.teknogoldonline.com" + link;
-        return url;
+       return "https://www.teknogoldonline.com" + link;
     }
 
     // проверяем, есть ли объявление на сайте, возвращает код, если существует и 0, если нет
@@ -287,12 +266,12 @@ public class Parser {
         HashMap<String, Integer> idProd = new HashMap<>();
         for (String str : url) {
             Connection connection = Jsoup.connect("https://back1.1way.market/board/hs/v1/dashboards2");
-            connection.userAgent(getConfigProperty("USER_AGENT"));
+            connection.userAgent(Objects.requireNonNull(getConfigProperty("USER_AGENT")));
             connection.requestBody(str).ignoreHttpErrors(true).ignoreContentType(true);
             connection.header("Content-Type", "application/json");
             connection.header("key", "33894f01-a28b-45cd-898d-eddf98012b14");
             connection.method(Connection.Method.POST);
-            Connection.Response response = connection.timeout(100 * 1000).execute();
+            Connection.Response response = connection.timeout(1000 * 1000).execute();
             int i = response.statusCode();
             if (i == 200) {
                 idProd.put(str, 200);
@@ -308,7 +287,7 @@ public class Parser {
         int n;
         String str = "";
         Connection connection = Jsoup.connect("https://back1.1way.market/board/hs/v1/img2");
-        connection.userAgent(getConfigProperty("USER_AGENT"));
+        connection.userAgent(Objects.requireNonNull(getConfigProperty("USER_AGENT")));
         connection.requestBody(url).ignoreContentType(true).ignoreHttpErrors(true);
         connection.header("Content-Type", "application/json");
         connection.header("key", "33894f01-a28b-45cd-898d-eddf98012b14");
@@ -318,10 +297,10 @@ public class Parser {
         n = response.statusCode();
         if (s.text().contains("Error")) {
             str = getPermission(url);
-            System.out.printf("  Картинки не существует. Отправлен запрос. Тело ответа  " + str);
+            System.out.println("  Картинки не существует. Отправлен запрос. Тело ответа  " + str);
 
         } else {
-            System.out.printf("  Картинка существует, id   " + s.text());
+            System.out.println("  Картинка существует, id   " + s.text());
         }
         return n == 200 ? Integer.parseInt(s.text()) : str == null ? 0 : Integer.parseInt(str);
     }
@@ -340,7 +319,7 @@ public class Parser {
         json.put("title", name);
         json.put("format", format);
         Connection.Response response = Jsoup.connect("https://back1.1way.market/board/hs/v1/img")
-                .userAgent(getConfigProperty("USER_AGENT"))
+                .userAgent(Objects.requireNonNull(getConfigProperty("USER_AGENT")))
                 .requestBody(json.toString()).ignoreContentType(true).ignoreHttpErrors(true)
                 .header("Content-Type", "application/json")
                 .header("key", "33894f01-a28b-45cd-898d-eddf98012b14")
@@ -383,9 +362,8 @@ public class Parser {
                 BufferedReader br = new BufferedReader(new InputStreamReader(
                         (connection.getInputStream())));
                 System.out.println("Output from Server .... \n");
-                while ((r = br.readLine()) != null) {
+                if ((r = br.readLine()) != null) {
                     System.out.println(r);
-                    return r;
                 }
                 connection.disconnect();
             }
@@ -1005,13 +983,13 @@ public class Parser {
             String s = element.text();
             if (s.length() > 0) {
                 if (s.contains(":")) {
-                    String str[] = s.split("\\:");
+                    String[] str = s.split(":");
                     if (str.length == 2) {
                         String key = str[0];
                         String value = str[1];
                         if (key.contains("/") && value.contains("/")) {
-                            String[] k = key.split("\\/");
-                            String[] v = value.split("\\/");
+                            String[] k = key.split("/");
+                            String[] v = value.split("/");
                             String key1 = k[0];
                             String key2 = k[1];
                             String value1 = v[0];
@@ -1044,7 +1022,7 @@ public class Parser {
     //посылаем полностью собранный json на сервер
     private static void sendJson(JSONObject jsonObject) throws IOException {
         Connection connection = Jsoup.connect("https://back1.1way.market/board/hs/v1/dashboards");
-        connection.userAgent(getConfigProperty("USER_AGENT"));
+        connection.userAgent(Objects.requireNonNull(getConfigProperty("USER_AGENT")));
         connection.requestBody(jsonObject.toString()).ignoreHttpErrors(true).ignoreContentType(true);
         connection.header("Content-Type", "application/json");
         connection.header("key", "33894f01-a28b-45cd-898d-eddf98012b14");
@@ -1062,7 +1040,7 @@ public class Parser {
     public static void main(String[] args) throws IOException, NullPointerException, IllegalArgumentException {
         addCodProperties();
         addMapUrs();
-       // saveConfigProperties();
+       saveConfigProperties();
 
         try {
             for (Map.Entry<String, Integer> m : mapUrls.entrySet()) {
@@ -1073,23 +1051,22 @@ public class Parser {
                   if (id.getValue() == 0) {
                         JSONObject jsonObject = new JSONObject();
                         Document document = Jsoup.connect(id.getKey())
-                                .userAgent(getConfigProperty("USER_AGENT"))
-                                .referrer(getConfigProperty("REFERRER"))
+                                .userAgent(Objects.requireNonNull(getConfigProperty("USER_AGENT")))
+                                .referrer(Objects.requireNonNull(getConfigProperty("REFERRER")))
                                 .timeout(100 * 1000)
                                 .get();
-                        String str = document.getElementsByClass("cloudzoom-gallery").first().attr("src");
+                        String str = Objects.requireNonNull(document.getElementsByClass("cloudzoom-gallery").first()).attr("src");
                         String mainImg = getConvertIMG(str);
                         Elements title = document.select("head > title");
                         String ID_url = document.select("#hddnUrunID").attr("value");
-                        String price = document.getElementsByClass("spanFiyat").first().text();
+                        String price = Objects.requireNonNull(document.getElementsByClass("spanFiyat").first()).text();
+                        Price prodPrice = new Price();
                         Elements productDesc = document.getElementsByClass("urunTabAlt").select("ul > li");
                         String otherDesc = document.getElementsByClass("urunTabAlt").text();
                         Elements links = document.getElementsByClass("cloudzoom-gallery");
                         HashMap<String, Set<Integer>> imgID = new HashMap<>();
-                        HashMap<String, Set<String>> images = new HashMap<>();
                         Set<String> img = getImgForProduct(links);
                         Set<Integer> numb = convertImgForID(img);
-                        images.put(id.getKey(), img);
                         imgID.put(id.getKey(), numb);
                         jsonObject.put("ID_url", ID_url);
                         if(!otherDesc.isEmpty()){
@@ -1103,7 +1080,7 @@ public class Parser {
                         if(!productDesc.isEmpty()){
                             jsonObject.put("properties", getJsonProp(productDesc));
                         }
-                        jsonObject.put("price", getConvertPrice(price));
+                        jsonObject.put("price", prodPrice.getPrice(price));
                         jsonObject.put("currency", getConfigProperty("currency"));
                         jsonObject.put("lang", "3");
                         sendJson(jsonObject);
