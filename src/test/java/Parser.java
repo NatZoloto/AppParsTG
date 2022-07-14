@@ -5,6 +5,7 @@ import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -45,168 +46,168 @@ public class Parser {
     }
 
     private static void addMapUrs() {
-        mapUrls.put("https://www.teknogoldonline.com/cep-telefonlari-22103", 1);
-        mapUrls.put("https://www.teknogoldonline.com/oyun-konsollari-22239", 75);
+//        mapUrls.put("https://www.teknogoldonline.com/cep-telefonlari-22103", 1);
+//        mapUrls.put("https://www.teknogoldonline.com/oyun-konsollari-22239", 75);
         mapUrls.put("https://www.teknogoldonline.com/oyun-kollari-joistik-22240", 75);
-        mapUrls.put("https://www.teknogoldonline.com/guvenlik-urunleri-22247", 74);
-        mapUrls.put("https://www.teknogoldonline.com/akilli-saatler-22106", 26);
-        mapUrls.put("https://www.teknogoldonline.com/cep-telefonu-aksesuarlari-22104", 27);
-        mapUrls.put("https://www.teknogoldonline.com/deck-telefonlar-22118", 28);
-        mapUrls.put("https://www.teknogoldonline.com/kablolu-masaustu-telefonlar-22119", 28);
-        mapUrls.put("https://www.teknogoldonline.com/konsol-oyunlari-22243", 164);
-        mapUrls.put("https://www.teknogoldonline.com/drone-ve-aksesuarlari-22246", 162);
-        mapUrls.put("https://www.teknogoldonline.com/karaoke-urunleri--22244", 163);
-        mapUrls.put("https://www.teknogoldonline.com/utu-22202", 88);
-        mapUrls.put("https://www.teknogoldonline.com/elektrikli-supurge-22203", 30);
-        mapUrls.put("https://www.teknogoldonline.com/sarjli-supurgeler-22723", 30);
-        mapUrls.put("https://www.teknogoldonline.com/akilli-robot-supurgeler-22800", 30);
-        mapUrls.put("https://www.teknogoldonline.com/kiyma-makinesi-22217", 92);
-        mapUrls.put("https://www.teknogoldonline.com/waffle-makinesi-22824", 169);
-        mapUrls.put("https://www.teknogoldonline.com/vantilator-22212", 78);
-        mapUrls.put("https://www.teknogoldonline.com/kahve-makinesi-22213", 94);
-        mapUrls.put("https://www.teknogoldonline.com/kahve-ogutucu-22221", 94);
-        mapUrls.put("https://www.teknogoldonline.com/pisirme-aletleri-22206", 170);
-        mapUrls.put("https://www.teknogoldonline.com/yumurta-pisirme-makinesi-22223", 170);
-        mapUrls.put("https://www.teknogoldonline.com/fritoz-22220", 170);
-        mapUrls.put("https://www.teknogoldonline.com/buzdolabi-22186", 3);
-        mapUrls.put("https://www.teknogoldonline.com/bulasik-makinesi-22187", 76);
-        mapUrls.put("https://www.teknogoldonline.com/su-sebili-22190", 95);
-        mapUrls.put("https://www.teknogoldonline.com/camasir-makinesi-22185", 31);
-        mapUrls.put("https://www.teknogoldonline.com/kurutma-makinesi-22188", 31);
-        mapUrls.put("https://www.teknogoldonline.com/mikrodalga-firinlar-22200", 79);
-        mapUrls.put("https://www.teknogoldonline.com/aspirator-22196", 81);
-        mapUrls.put("https://www.teknogoldonline.com/davlumbaz-22195", 81);
-        mapUrls.put("https://www.teknogoldonline.com/ankastre-firin-22198", 82);
-        mapUrls.put("https://www.teknogoldonline.com/ankastre-ocak--22197", 80);
-        mapUrls.put("https://www.teknogoldonline.com/ocak-22193", 80);
-        mapUrls.put("https://www.teknogoldonline.com/yatay-derin-dondurucu-22192", 171);
-        mapUrls.put("https://www.teknogoldonline.com/dikey-derin-dondurucu-22191", 171);
-        mapUrls.put("https://www.teknogoldonline.com/solo-tam-boy-firin-22199", 80);
-        mapUrls.put("https://www.teknogoldonline.com/televizyon-22160", 2);
-        mapUrls.put("https://www.teknogoldonline.com/ev-sinema-sistemleri-22131", 70);
-        mapUrls.put("https://www.teknogoldonline.com/guvenlik-sistemleri-22140", 74);
-        mapUrls.put("https://www.teknogoldonline.com/projeksiyon-sistemleri-22134", 7);
-        mapUrls.put("https://www.teknogoldonline.com/hoparlorler-22143", 71);
-        mapUrls.put("https://www.teknogoldonline.com/aski-aparatlari-22149", 69);
-        mapUrls.put("https://www.teknogoldonline.com/video-kameralar-22153", 145);
-        mapUrls.put("https://www.teknogoldonline.com/bluetooth-hoparlor-22132", 71);
-        mapUrls.put("https://www.teknogoldonline.com/muzik-sistemleri-22133", 172);
-        mapUrls.put("https://www.teknogoldonline.com/bluray-ve-dvd-oynaticilari-sarf-mal-22136", 174);
-        mapUrls.put("https://www.teknogoldonline.com/mikrofonlar-22142", 163);
-        mapUrls.put("https://www.teknogoldonline.com/ses-kayit-cihazlari-22145", 175);
-        mapUrls.put("https://www.teknogoldonline.com/mp3-mp4-calar--22146", 176);
-        mapUrls.put("https://www.teknogoldonline.com/fotograf-makineleri-ve-lensleri-22152", 147);
-        mapUrls.put("https://www.teknogoldonline.com/arac-ici-ses-sistemleri-22156", 149);
-        mapUrls.put("https://www.teknogoldonline.com/goruntu-ve-ses-kablolari-22138", 73);
-        mapUrls.put("https://www.teknogoldonline.com/uydu-alicilari-ve-uydu-ekipmanlari-22135", 179);
-        mapUrls.put("https://www.teknogoldonline.com/video-ses-converter-cogaltici-22147", 73);
-        mapUrls.put("https://www.teknogoldonline.com/sunum-kumandalari-22150", 73);
-        mapUrls.put("https://www.teknogoldonline.com/android-box-stick-22833", 179);
-        mapUrls.put("https://www.teknogoldonline.com/mikrofon-sehpasi-ayagi-22155", 163);
-        mapUrls.put("https://www.teknogoldonline.com/saat-ve-radyolar-23498", 172);
-        mapUrls.put("https://www.teknogoldonline.com/kablolu-sarj-cihazlari-22109", 180);
-        mapUrls.put("https://www.teknogoldonline.com/sarj-data-ses-kablolari-22111", 181);
-        mapUrls.put("https://www.teknogoldonline.com/selfi-cubuklari-telefon-tripodlari-22116", 182);
-        mapUrls.put("https://www.teknogoldonline.com/-kulak-ustu-telefon-kulakliklari-22122", 183);
-        mapUrls.put("https://www.teknogoldonline.com/cep-telefonu-donusturucu-parcalari-22126", 184);
-        mapUrls.put("https://www.teknogoldonline.com/powerbank-22107", 185);
-        mapUrls.put("https://www.teknogoldonline.com/kablosuz-sarj-cihazlari-22110", 180);
-        mapUrls.put("https://www.teknogoldonline.com/arac-ici-sarjerler-ve-arac-ici-aksesuarlar-22112", 186);
-        mapUrls.put("https://www.teknogoldonline.com/arac-ici-telefon-tutucular-22123", 187);
-        mapUrls.put("https://www.teknogoldonline.com/bluetooth-kulakliklar-22120", 188);
-        mapUrls.put("https://www.teknogoldonline.com/bisiklet-ve-motosiklet-teltutucu-22129", 27);
-        mapUrls.put("https://www.teknogoldonline.com/telsiz-ve-aksesuarlari-22121", 189);
-        mapUrls.put("https://www.teknogoldonline.com/kablolu-kulakici-telefon-kulakliklar-23437", 190);
-        mapUrls.put("https://www.teknogoldonline.com/dizustu-bilgisayarlar--22248", 21);
-        mapUrls.put("https://www.teknogoldonline.com/tabletler-22264", 24);
-        mapUrls.put("https://www.teknogoldonline.com/masaustu-pc-22270", 22);
-        mapUrls.put("https://www.teknogoldonline.com/aio-pc--22276", 191);
-        mapUrls.put("https://www.teknogoldonline.com/siyah-lazer-yazicilar-22349", 193);
-        mapUrls.put("https://www.teknogoldonline.com/renkli-lazer-yazicilar-22348", 193);
-        mapUrls.put("https://www.teknogoldonline.com/renkli-puskutmeli-yazicilar-22346", 192);
-        mapUrls.put("https://www.teknogoldonline.com/fotograf-yazicilari-22352", 194);
-        mapUrls.put("https://www.teknogoldonline.com/yazici-kablo-aksesuar-22350", 195);
-        mapUrls.put("https://www.teknogoldonline.com/veri-depolama-harddisk-22305", 35);
-        mapUrls.put("https://www.teknogoldonline.com/veri-depolama-hafiza-karti-22297", 196);
-        mapUrls.put("https://www.teknogoldonline.com/veri-depolama-usb-bellek-22290", 73);
-        mapUrls.put("https://www.teknogoldonline.com/calisma-masasi-22374", 197);
-        mapUrls.put("https://www.teknogoldonline.com/tv-sehpatv-uniteleri", 202);
-        mapUrls.put("https://www.teknogoldonline.com/karyola-22380", 198);
-        mapUrls.put("https://www.teknogoldonline.com/komodin-sifonyer-22385", 199);
-        mapUrls.put("https://www.teknogoldonline.com/yemek-masasi-22390", 200);
-        mapUrls.put("https://www.teknogoldonline.com/portmanto-22381", 205);
-        mapUrls.put("https://www.teknogoldonline.com/sehpa-22376", 201);
-        mapUrls.put("https://www.teknogoldonline.com/raf-22387", 203);
-        mapUrls.put("https://www.teknogoldonline.com/tekli-koltuk-berje-22378", 68);
-        mapUrls.put("https://www.teknogoldonline.com/ayakkabilik-22382", 204);
-        mapUrls.put("https://www.teknogoldonline.com/gardirop-22379", 206);
-        mapUrls.put("https://www.teknogoldonline.com/dolap-22383", 206);
-        mapUrls.put("https://www.teknogoldonline.com/mutfak-tartisi-22411", 102);
-        mapUrls.put("https://www.teknogoldonline.com/duduklu-tencere-22403", 93);
-        mapUrls.put("https://www.teknogoldonline.com/tava-22401", 93);
-        mapUrls.put("https://www.teknogoldonline.com/sinek-kovar-makine-cihazlari-22830", 207);
-        mapUrls.put("https://www.teknogoldonline.com/cay-kahve-su-bardagi-kupa-22402", 211);
-        mapUrls.put("https://www.teknogoldonline.com/saklama-kabi-kap-fanus-22419", 210);
-        mapUrls.put("https://www.teknogoldonline.com/utu-masasi-23578", 208);
-        mapUrls.put("https://www.teknogoldonline.com/tuy-toplayici-cihazlar-23607", 212);
-        mapUrls.put("https://www.teknogoldonline.com/bahce-peyzaj-balkon-urunleri-22396", 213);
-        mapUrls.put("https://www.teknogoldonline.com/nevresim-takimi-22438", 215);
-        mapUrls.put("https://www.teknogoldonline.com/lastikli-carsaf-22448", 215);
-        mapUrls.put("https://www.teknogoldonline.com/yastik--22441", 216);
-        mapUrls.put("https://www.teknogoldonline.com/yorgan-22439", 217);
-        mapUrls.put("https://www.teknogoldonline.com/battaniye-22442", 217);
-        mapUrls.put("https://www.teknogoldonline.com/alez-22447", 218);
-        mapUrls.put("https://www.teknogoldonline.com/havlu--22444", 219);
-        mapUrls.put("https://www.teknogoldonline.com/elektrik-ve-pil-urunleri-22432", 220);
-        mapUrls.put("https://www.teknogoldonline.com/ofis-koltuklari-22450", 29);
-        mapUrls.put("https://www.teknogoldonline.com/ofis-sehpalar-22454", 197);
-        mapUrls.put("https://www.teknogoldonline.com/ofis-masalari-22451", 197);
-        mapUrls.put("https://www.teknogoldonline.com/ofis-kitapliklar-22453", 224);
-        mapUrls.put("https://www.teknogoldonline.com/sicaklik-olcer-22463", 127);
-        mapUrls.put("https://www.teknogoldonline.com/baskul-22728", 129);
-        mapUrls.put("https://www.teknogoldonline.com/nebulizator-soguk-buhar-seti-23776", 225);
-        mapUrls.put("https://www.teknogoldonline.com/ev-dekorasyon-22459", 226);
-        mapUrls.put("https://www.teknogoldonline.com/klimalar-22508", 77);
-        mapUrls.put("https://www.teknogoldonline.com/sobalar-22514", 227);
-        mapUrls.put("https://www.teknogoldonline.com/termosifonlar-23947", 228);
-        mapUrls.put("https://www.teknogoldonline.com/sofbenler-ani-su-isiticilari-22523", 230);
-        mapUrls.put("https://www.teknogoldonline.com/epilator-ve-ipl-cihazlari-22226", 111);
-        mapUrls.put("https://www.teknogoldonline.com/sac-ve-sakal-kesme-makineleri-22227", 116);
-        mapUrls.put("https://www.teknogoldonline.com/tuy-alma-makineleri-22229", 117);
-        mapUrls.put("https://www.teknogoldonline.com/erkek-bakim-kiti-22230", 118);
-        mapUrls.put("https://www.teknogoldonline.com/tirnak-bakimi-22232", 121);
-        mapUrls.put("https://www.teknogoldonline.com/ayak-bakim-22231", 121);
-        mapUrls.put("https://www.teknogoldonline.com/sac-kurutma-ve-sekillendirme-urunleri-22228", 104);
-        mapUrls.put("https://www.teknogoldonline.com/bebek-termometre-22496", 127);
-        mapUrls.put("https://www.teknogoldonline.com/bebek-telsizi-kamera", 159);
-        mapUrls.put("https://www.teknogoldonline.com/bebek-elektrikli-urunleri-22495", 231);
-        mapUrls.put("https://www.teknogoldonline.com/bebek-yiyecek-icecek-hazirlama-22494", 232);
-        mapUrls.put("https://www.teknogoldonline.com/cocuk-saatleri-22497", 156);
-        mapUrls.put("https://www.teknogoldonline.com/oyuncaklar-22480", 157);
-        mapUrls.put("https://www.teknogoldonline.com/oyuncak-arabalar-22483", 155);
-        mapUrls.put("https://www.teknogoldonline.com/scooterler-22481", 154);
-        mapUrls.put("https://www.teknogoldonline.com/zeka-gelistirici-oyun-oyuncak-22485", 153);
-        mapUrls.put("https://www.teknogoldonline.com/seyahat-canta-kilif-valizler-22503", 147);
-        mapUrls.put("https://www.teknogoldonline.com/aksiyon-kameralari-22159", 233);
-        mapUrls.put("https://www.teknogoldonline.com/elektrikli-pilli-gazli-aletler-ve-el-aletleri--22470", 234);
-        mapUrls.put("https://www.teknogoldonline.com/elektrik-malzemeleri-22643", 73);
-        mapUrls.put("https://www.teknogoldonline.com/outdoor-ekipmanlari-22501", 100);
-        mapUrls.put("https://www.teknogoldonline.com/blender--22208", 165);
-        mapUrls.put("https://www.teknogoldonline.com/blender-ve-mutfak-robotu-22215", 165);
-        mapUrls.put("https://www.teknogoldonline.com/dograyici-22214", 165);
-        mapUrls.put("https://www.teknogoldonline.com/kettle-22216", 85);
-        mapUrls.put("https://www.teknogoldonline.com/cay-makinesi-22207", 85);
-        mapUrls.put("https://www.teknogoldonline.com/ekmek-kizartma-22210", 84);
-        mapUrls.put("https://www.teknogoldonline.com/tost-ve-izgara-makineleri-22209", 86);
-        mapUrls.put("https://www.teknogoldonline.com/hava-temizleme-ve-nem-alma-cihazlari-22204", 89);
-        mapUrls.put("https://www.teknogoldonline.com/meyve-sikacagi-22218", 168);
-        mapUrls.put("https://www.teknogoldonline.com/oyuncu-klavyesi-22283", 235);
-        mapUrls.put("https://www.teknogoldonline.com/direksiyonlar-22289", 236);
-        mapUrls.put("https://www.teknogoldonline.com/oyuncu-mouslari-22284", 237);
-        mapUrls.put("https://www.teknogoldonline.com/oyuncu-kulakliklari-22285", 238);
-        mapUrls.put("https://www.teknogoldonline.com/oyuncu-pad-22288", 239);
-        mapUrls.put("https://www.teknogoldonline.com/oyuncu-koltuklari-22287", 240);
-        mapUrls.put("https://www.teknogoldonline.com/oyuncu-klavye-ve-mouse-setleri-22286", 241);
+//        mapUrls.put("https://www.teknogoldonline.com/guvenlik-urunleri-22247", 74);
+//        mapUrls.put("https://www.teknogoldonline.com/akilli-saatler-22106", 26);
+//        mapUrls.put("https://www.teknogoldonline.com/cep-telefonu-aksesuarlari-22104", 27);
+//        mapUrls.put("https://www.teknogoldonline.com/deck-telefonlar-22118", 28);
+//        mapUrls.put("https://www.teknogoldonline.com/kablolu-masaustu-telefonlar-22119", 28);
+//        mapUrls.put("https://www.teknogoldonline.com/konsol-oyunlari-22243", 164);
+//        mapUrls.put("https://www.teknogoldonline.com/drone-ve-aksesuarlari-22246", 162);
+//        mapUrls.put("https://www.teknogoldonline.com/karaoke-urunleri--22244", 163);
+//        mapUrls.put("https://www.teknogoldonline.com/utu-22202", 88);
+//        mapUrls.put("https://www.teknogoldonline.com/elektrikli-supurge-22203", 30);
+//        mapUrls.put("https://www.teknogoldonline.com/sarjli-supurgeler-22723", 30);
+//        mapUrls.put("https://www.teknogoldonline.com/akilli-robot-supurgeler-22800", 30);
+//        mapUrls.put("https://www.teknogoldonline.com/kiyma-makinesi-22217", 92);
+//        mapUrls.put("https://www.teknogoldonline.com/waffle-makinesi-22824", 169);
+//        mapUrls.put("https://www.teknogoldonline.com/vantilator-22212", 78);
+//        mapUrls.put("https://www.teknogoldonline.com/kahve-makinesi-22213", 94);
+//        mapUrls.put("https://www.teknogoldonline.com/kahve-ogutucu-22221", 94);
+//        mapUrls.put("https://www.teknogoldonline.com/pisirme-aletleri-22206", 170);
+//        mapUrls.put("https://www.teknogoldonline.com/yumurta-pisirme-makinesi-22223", 170);
+//        mapUrls.put("https://www.teknogoldonline.com/fritoz-22220", 170);
+//        mapUrls.put("https://www.teknogoldonline.com/buzdolabi-22186", 3);
+//        mapUrls.put("https://www.teknogoldonline.com/bulasik-makinesi-22187", 76);
+//        mapUrls.put("https://www.teknogoldonline.com/su-sebili-22190", 95);
+//        mapUrls.put("https://www.teknogoldonline.com/camasir-makinesi-22185", 31);
+//        mapUrls.put("https://www.teknogoldonline.com/kurutma-makinesi-22188", 31);
+//        mapUrls.put("https://www.teknogoldonline.com/mikrodalga-firinlar-22200", 79);
+//        mapUrls.put("https://www.teknogoldonline.com/aspirator-22196", 81);
+//        mapUrls.put("https://www.teknogoldonline.com/davlumbaz-22195", 81);
+//        mapUrls.put("https://www.teknogoldonline.com/ankastre-firin-22198", 82);
+//        mapUrls.put("https://www.teknogoldonline.com/ankastre-ocak--22197", 80);
+//        mapUrls.put("https://www.teknogoldonline.com/ocak-22193", 80);
+//        mapUrls.put("https://www.teknogoldonline.com/yatay-derin-dondurucu-22192", 171);
+//        mapUrls.put("https://www.teknogoldonline.com/dikey-derin-dondurucu-22191", 171);
+//        mapUrls.put("https://www.teknogoldonline.com/solo-tam-boy-firin-22199", 80);
+//        mapUrls.put("https://www.teknogoldonline.com/televizyon-22160", 2);
+//        mapUrls.put("https://www.teknogoldonline.com/ev-sinema-sistemleri-22131", 70);
+//        mapUrls.put("https://www.teknogoldonline.com/guvenlik-sistemleri-22140", 74);
+//        mapUrls.put("https://www.teknogoldonline.com/projeksiyon-sistemleri-22134", 7);
+//        mapUrls.put("https://www.teknogoldonline.com/hoparlorler-22143", 71);
+//        mapUrls.put("https://www.teknogoldonline.com/aski-aparatlari-22149", 69);
+//        mapUrls.put("https://www.teknogoldonline.com/video-kameralar-22153", 145);
+//        mapUrls.put("https://www.teknogoldonline.com/bluetooth-hoparlor-22132", 71);
+//        mapUrls.put("https://www.teknogoldonline.com/muzik-sistemleri-22133", 172);
+//        mapUrls.put("https://www.teknogoldonline.com/bluray-ve-dvd-oynaticilari-sarf-mal-22136", 174);
+//        mapUrls.put("https://www.teknogoldonline.com/mikrofonlar-22142", 163);
+//        mapUrls.put("https://www.teknogoldonline.com/ses-kayit-cihazlari-22145", 175);
+//        mapUrls.put("https://www.teknogoldonline.com/mp3-mp4-calar--22146", 176);
+//        mapUrls.put("https://www.teknogoldonline.com/fotograf-makineleri-ve-lensleri-22152", 147);
+//        mapUrls.put("https://www.teknogoldonline.com/arac-ici-ses-sistemleri-22156", 149);
+//        mapUrls.put("https://www.teknogoldonline.com/goruntu-ve-ses-kablolari-22138", 73);
+//        mapUrls.put("https://www.teknogoldonline.com/uydu-alicilari-ve-uydu-ekipmanlari-22135", 179);
+//        mapUrls.put("https://www.teknogoldonline.com/video-ses-converter-cogaltici-22147", 73);
+//        mapUrls.put("https://www.teknogoldonline.com/sunum-kumandalari-22150", 73);
+//        mapUrls.put("https://www.teknogoldonline.com/android-box-stick-22833", 179);
+//        mapUrls.put("https://www.teknogoldonline.com/mikrofon-sehpasi-ayagi-22155", 163);
+//        mapUrls.put("https://www.teknogoldonline.com/saat-ve-radyolar-23498", 172);
+//        mapUrls.put("https://www.teknogoldonline.com/kablolu-sarj-cihazlari-22109", 180);
+//        mapUrls.put("https://www.teknogoldonline.com/sarj-data-ses-kablolari-22111", 181);
+//        mapUrls.put("https://www.teknogoldonline.com/selfi-cubuklari-telefon-tripodlari-22116", 182);
+//        mapUrls.put("https://www.teknogoldonline.com/-kulak-ustu-telefon-kulakliklari-22122", 183);
+//        mapUrls.put("https://www.teknogoldonline.com/cep-telefonu-donusturucu-parcalari-22126", 184);
+//        mapUrls.put("https://www.teknogoldonline.com/powerbank-22107", 185);
+//        mapUrls.put("https://www.teknogoldonline.com/kablosuz-sarj-cihazlari-22110", 180);
+//        mapUrls.put("https://www.teknogoldonline.com/arac-ici-sarjerler-ve-arac-ici-aksesuarlar-22112", 186);
+//        mapUrls.put("https://www.teknogoldonline.com/arac-ici-telefon-tutucular-22123", 187);
+//        mapUrls.put("https://www.teknogoldonline.com/bluetooth-kulakliklar-22120", 188);
+//        mapUrls.put("https://www.teknogoldonline.com/bisiklet-ve-motosiklet-teltutucu-22129", 27);
+//        mapUrls.put("https://www.teknogoldonline.com/telsiz-ve-aksesuarlari-22121", 189);
+//        mapUrls.put("https://www.teknogoldonline.com/kablolu-kulakici-telefon-kulakliklar-23437", 190);
+//        mapUrls.put("https://www.teknogoldonline.com/dizustu-bilgisayarlar--22248", 21);
+//        mapUrls.put("https://www.teknogoldonline.com/tabletler-22264", 24);
+//        mapUrls.put("https://www.teknogoldonline.com/masaustu-pc-22270", 22);
+//        mapUrls.put("https://www.teknogoldonline.com/aio-pc--22276", 191);
+//        mapUrls.put("https://www.teknogoldonline.com/siyah-lazer-yazicilar-22349", 193);
+//        mapUrls.put("https://www.teknogoldonline.com/renkli-lazer-yazicilar-22348", 193);
+//        mapUrls.put("https://www.teknogoldonline.com/renkli-puskutmeli-yazicilar-22346", 192);
+//        mapUrls.put("https://www.teknogoldonline.com/fotograf-yazicilari-22352", 194);
+//        mapUrls.put("https://www.teknogoldonline.com/yazici-kablo-aksesuar-22350", 195);
+//        mapUrls.put("https://www.teknogoldonline.com/veri-depolama-harddisk-22305", 35);
+//        mapUrls.put("https://www.teknogoldonline.com/veri-depolama-hafiza-karti-22297", 196);
+//        mapUrls.put("https://www.teknogoldonline.com/veri-depolama-usb-bellek-22290", 73);
+//        mapUrls.put("https://www.teknogoldonline.com/calisma-masasi-22374", 197);
+//        mapUrls.put("https://www.teknogoldonline.com/tv-sehpatv-uniteleri", 202);
+//        mapUrls.put("https://www.teknogoldonline.com/karyola-22380", 198);
+//        mapUrls.put("https://www.teknogoldonline.com/komodin-sifonyer-22385", 199);
+//        mapUrls.put("https://www.teknogoldonline.com/yemek-masasi-22390", 200);
+//        mapUrls.put("https://www.teknogoldonline.com/portmanto-22381", 205);
+//        mapUrls.put("https://www.teknogoldonline.com/sehpa-22376", 201);
+//        mapUrls.put("https://www.teknogoldonline.com/raf-22387", 203);
+//        mapUrls.put("https://www.teknogoldonline.com/tekli-koltuk-berje-22378", 68);
+//        mapUrls.put("https://www.teknogoldonline.com/ayakkabilik-22382", 204);
+//        mapUrls.put("https://www.teknogoldonline.com/gardirop-22379", 206);
+//        mapUrls.put("https://www.teknogoldonline.com/dolap-22383", 206);
+//        mapUrls.put("https://www.teknogoldonline.com/mutfak-tartisi-22411", 102);
+//        mapUrls.put("https://www.teknogoldonline.com/duduklu-tencere-22403", 93);
+//        mapUrls.put("https://www.teknogoldonline.com/tava-22401", 93);
+//        mapUrls.put("https://www.teknogoldonline.com/sinek-kovar-makine-cihazlari-22830", 207);
+//        mapUrls.put("https://www.teknogoldonline.com/cay-kahve-su-bardagi-kupa-22402", 211);
+//        mapUrls.put("https://www.teknogoldonline.com/saklama-kabi-kap-fanus-22419", 210);
+//        mapUrls.put("https://www.teknogoldonline.com/utu-masasi-23578", 208);
+//        mapUrls.put("https://www.teknogoldonline.com/tuy-toplayici-cihazlar-23607", 212);
+//        mapUrls.put("https://www.teknogoldonline.com/bahce-peyzaj-balkon-urunleri-22396", 213);
+//        mapUrls.put("https://www.teknogoldonline.com/nevresim-takimi-22438", 215);
+//        mapUrls.put("https://www.teknogoldonline.com/lastikli-carsaf-22448", 215);
+//        mapUrls.put("https://www.teknogoldonline.com/yastik--22441", 216);
+//        mapUrls.put("https://www.teknogoldonline.com/yorgan-22439", 217);
+//        mapUrls.put("https://www.teknogoldonline.com/battaniye-22442", 217);
+//        mapUrls.put("https://www.teknogoldonline.com/alez-22447", 218);
+//        mapUrls.put("https://www.teknogoldonline.com/havlu--22444", 219);
+//        mapUrls.put("https://www.teknogoldonline.com/elektrik-ve-pil-urunleri-22432", 220);
+//        mapUrls.put("https://www.teknogoldonline.com/ofis-koltuklari-22450", 29);
+//        mapUrls.put("https://www.teknogoldonline.com/ofis-sehpalar-22454", 197);
+//        mapUrls.put("https://www.teknogoldonline.com/ofis-masalari-22451", 197);
+//        mapUrls.put("https://www.teknogoldonline.com/ofis-kitapliklar-22453", 224);
+//        mapUrls.put("https://www.teknogoldonline.com/sicaklik-olcer-22463", 127);
+//        mapUrls.put("https://www.teknogoldonline.com/baskul-22728", 129);
+//        mapUrls.put("https://www.teknogoldonline.com/nebulizator-soguk-buhar-seti-23776", 225);
+//        mapUrls.put("https://www.teknogoldonline.com/ev-dekorasyon-22459", 226);
+//        mapUrls.put("https://www.teknogoldonline.com/klimalar-22508", 77);
+//        mapUrls.put("https://www.teknogoldonline.com/sobalar-22514", 227);
+//        mapUrls.put("https://www.teknogoldonline.com/termosifonlar-23947", 228);
+//        mapUrls.put("https://www.teknogoldonline.com/sofbenler-ani-su-isiticilari-22523", 230);
+//        mapUrls.put("https://www.teknogoldonline.com/epilator-ve-ipl-cihazlari-22226", 111);
+//        mapUrls.put("https://www.teknogoldonline.com/sac-ve-sakal-kesme-makineleri-22227", 116);
+//        mapUrls.put("https://www.teknogoldonline.com/tuy-alma-makineleri-22229", 117);
+//        mapUrls.put("https://www.teknogoldonline.com/erkek-bakim-kiti-22230", 118);
+//        mapUrls.put("https://www.teknogoldonline.com/tirnak-bakimi-22232", 121);
+//        mapUrls.put("https://www.teknogoldonline.com/ayak-bakim-22231", 121);
+//        mapUrls.put("https://www.teknogoldonline.com/sac-kurutma-ve-sekillendirme-urunleri-22228", 104);
+//        mapUrls.put("https://www.teknogoldonline.com/bebek-termometre-22496", 127);
+//        mapUrls.put("https://www.teknogoldonline.com/bebek-telsizi-kamera", 159);
+//        mapUrls.put("https://www.teknogoldonline.com/bebek-elektrikli-urunleri-22495", 231);
+//        mapUrls.put("https://www.teknogoldonline.com/bebek-yiyecek-icecek-hazirlama-22494", 232);
+//        mapUrls.put("https://www.teknogoldonline.com/cocuk-saatleri-22497", 156);
+//        mapUrls.put("https://www.teknogoldonline.com/oyuncaklar-22480", 157);
+//        mapUrls.put("https://www.teknogoldonline.com/oyuncak-arabalar-22483", 155);
+//        mapUrls.put("https://www.teknogoldonline.com/scooterler-22481", 154);
+//        mapUrls.put("https://www.teknogoldonline.com/zeka-gelistirici-oyun-oyuncak-22485", 153);
+//        mapUrls.put("https://www.teknogoldonline.com/seyahat-canta-kilif-valizler-22503", 147);
+//        mapUrls.put("https://www.teknogoldonline.com/aksiyon-kameralari-22159", 233);
+//        mapUrls.put("https://www.teknogoldonline.com/elektrikli-pilli-gazli-aletler-ve-el-aletleri--22470", 234);
+//        mapUrls.put("https://www.teknogoldonline.com/elektrik-malzemeleri-22643", 73);
+//        mapUrls.put("https://www.teknogoldonline.com/outdoor-ekipmanlari-22501", 100);
+//        mapUrls.put("https://www.teknogoldonline.com/blender--22208", 165);
+//        mapUrls.put("https://www.teknogoldonline.com/blender-ve-mutfak-robotu-22215", 165);
+//        mapUrls.put("https://www.teknogoldonline.com/dograyici-22214", 165);
+//        mapUrls.put("https://www.teknogoldonline.com/kettle-22216", 85);
+//        mapUrls.put("https://www.teknogoldonline.com/cay-makinesi-22207", 85);
+//        mapUrls.put("https://www.teknogoldonline.com/ekmek-kizartma-22210", 84);
+//        mapUrls.put("https://www.teknogoldonline.com/tost-ve-izgara-makineleri-22209", 86);
+//        mapUrls.put("https://www.teknogoldonline.com/hava-temizleme-ve-nem-alma-cihazlari-22204", 89);
+//        mapUrls.put("https://www.teknogoldonline.com/meyve-sikacagi-22218", 168);
+//        mapUrls.put("https://www.teknogoldonline.com/oyuncu-klavyesi-22283", 235);
+//        mapUrls.put("https://www.teknogoldonline.com/direksiyonlar-22289", 236);
+//        mapUrls.put("https://www.teknogoldonline.com/oyuncu-mouslari-22284", 237);
+//        mapUrls.put("https://www.teknogoldonline.com/oyuncu-kulakliklari-22285", 238);
+//        mapUrls.put("https://www.teknogoldonline.com/oyuncu-pad-22288", 239);
+//        mapUrls.put("https://www.teknogoldonline.com/oyuncu-koltuklari-22287", 240);
+//        mapUrls.put("https://www.teknogoldonline.com/oyuncu-klavye-ve-mouse-setleri-22286", 241);
 
     }
 
@@ -959,10 +960,20 @@ public class Parser {
         properties.put("Çalışma Gücü", 48); //мощность
     }
 
+    private static HashMap<String, String> getProperties(Elements productDesc){
+        HashMap<String, String> desc = getProp(productDesc);
+        if(desc.isEmpty()){
+            desc = getTdProp(productDesc);
+        } if(desc.isEmpty()){
+            desc = getPropBr(productDesc);
+        }
+        return desc;
+    }
+
     // кладем в мапу код свойств -> свойства
     private static HashMap<Integer, String> getConvertProp(Elements productDesc) {
         HashMap<Integer, String> prop = new HashMap<>();
-        HashMap<String, String> desc = getProp(productDesc);
+        HashMap<String, String> desc = getProperties(productDesc);
         if(!desc.isEmpty()) {
             for (Map.Entry<String, Integer> p : properties.entrySet()) {
                 for (Map.Entry<String, String> s : desc.entrySet()) {
@@ -976,10 +987,56 @@ public class Parser {
         return prop;
     }
 
+    private static HashMap<String, String> getTdProp(Elements productDesc){
+        HashMap<String, String> keyValue = new HashMap<>();
+        Elements desc = productDesc.select("tr");
+        for (Element element : desc) {
+         String key = element.select("td > strong").text();
+         String value = "";
+         if(element.select("td").textNodes().size() > 0){
+         value = element.select("td").textNodes().get(0).text();}
+         if(!key.isEmpty() && !value.isEmpty()){
+         keyValue.put(key, value);
+         }
+        }
+        return keyValue;
+    }
+
+    private static HashMap<String, String> getPropBr(Elements productDesc) {
+        HashMap<String, String> keyValue = new HashMap<>();
+        List<TextNode> desc = productDesc.select("td p").textNodes();
+        for (TextNode element : desc) {
+            String s = element.text();
+            if (s.length() > 0) {
+                if (s.contains(":")) {
+                    String[] str = s.split(":");
+                    if (str.length == 2) {
+                        String key = str[0];
+                        String value = str[1];
+                        if (key.contains("/") && value.contains("/")) {
+                            String[] k = key.split("/");
+                            String[] v = value.split("/");
+                            String key1 = k[0];
+                            String key2 = k[1];
+                            String value1 = v[0];
+                            String value2 = v[1];
+                            keyValue.put(key1.trim(), value1.trim());
+                            keyValue.put(key2.trim(), value2.trim());
+                        } else {
+                            keyValue.put(key.trim(), value.trim());
+                        }
+                    }
+                }
+            }
+        }
+        return keyValue;
+    }
+
     //получаем свойства товара, разделяем на ключ -> значение, отрезаем лишнее, кладем в мапу
     private static HashMap<String, String> getProp(Elements productDesc) {
         HashMap<String, String> keyValue = new HashMap<>();
-        for (Element element : productDesc) {
+        Elements desc = productDesc.select("ul > li");
+        for (Element element : desc) {
             String s = element.text();
             if (s.length() > 0) {
                 if (s.contains(":")) {
@@ -1048,7 +1105,7 @@ public class Parser {
                 List<String> urlsProducts = addUrlsProducts(addUrl(m.getKey()));
                 HashMap<String, Integer> idProd = checkIDProduct(urlsProducts);
                 for (Map.Entry<String, Integer> id : idProd.entrySet()) {
-                  if (id.getValue() == 0) {
+                  //if (id.getValue() == 0) {
                         JSONObject jsonObject = new JSONObject();
                         Document document = Jsoup.connect(id.getKey())
                                 .userAgent(Objects.requireNonNull(getConfigProperty("USER_AGENT")))
@@ -1061,7 +1118,7 @@ public class Parser {
                         String ID_url = document.select("#hddnUrunID").attr("value");
                         String price = Objects.requireNonNull(document.getElementsByClass("spanFiyat").first()).text();
                         Price prodPrice = new Price();
-                        Elements productDesc = document.getElementsByClass("urunTabAlt").select("ul > li");
+                        Elements productDesc = document.getElementsByClass("urunTabAlt");
                         String otherDesc = document.getElementsByClass("urunTabAlt").text();
                         Elements links = document.getElementsByClass("cloudzoom-gallery");
                         HashMap<String, Set<Integer>> imgID = new HashMap<>();
@@ -1086,7 +1143,7 @@ public class Parser {
                         sendJson(jsonObject);
                     }
                 }
-          }
+          //}
 
         } catch (HttpStatusException e) {
             e.printStackTrace();
